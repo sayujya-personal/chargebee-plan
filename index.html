@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Choose a Plan</title>
+  <script src="https://js.chargebee.com/v2/chargebee.js"></script>
+</head>
+<body>
+  <h1>Select a Plan</h1>
+
+  <button onclick="checkout('go-monthly-USD-Monthly')">Go Plan</button>
+  <button onclick="checkout('rise-monthly-USD-Monthly')">Rise Plan</button>
+  <button onclick="checkout('scale-monthly-USD-Monthly')">Scale Plan</button>
+
+  <script>
+    // Initialize Chargebee with your real site name
+    var chargebeeInstance = Chargebee.init({
+      site: "chargebee-assessment2-test"
+    });
+
+    // Open the Chargebee checkout with selected plan
+    function checkout(planId) {
+      chargebeeInstance.openCheckout({
+        subscriptionItems: [
+          {
+            item_price_id: planId
+          }
+        ]
+      });
+    }
+  </script>
+</body>
+</html>
